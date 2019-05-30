@@ -249,7 +249,7 @@ See Example panel for the example response body
             }
         }
 
-+ Response 201 (application/json; charset=utf-8)
++ Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data (array [DQSDepartments])
         + Response (200 SuccessResponse)
@@ -1005,15 +1005,6 @@ A multipurpose object used by several endpoints
 ## DataFactoryExport (object)
 + Request: `<?xml version="1.0"?><PackageInput DFname="TestPackage" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://itashelp.hivedome.net/media/inpTestPackage.xsd"> <TradingEntityCode>xx</TradingEntityCode><CutOffDate>2018-04-30</CutOffDate></PackageInput>` (string)
 
-## DQSDepartments (object)
-+ TradingEntityId: jt (string)
-+ DepartmentId: 1111 (string)
-+ DepartmentDescription: Department 1111 (string)
-+ NominalCategory (NominalCategory)
-+ Country (Country)
-+ EDICode: EDI1234 (string)
-+ Status: O (string)
-
 ## DepartmentValueList (object)
 + DepartmentCode: NAD (string)
 + PnLCurrency (array [ValuesInPnLCcy])
@@ -1077,6 +1068,15 @@ A multipurpose object used by several endpoints
 
 ## DocumentId (object)
 + DocumentId: 12345 (number)
+
+## DQSDepartments (object)
++ TradingEntityId: jt (string)
++ DepartmentId: 1111 (string)
++ DepartmentDescription: Department 1111 (string)
++ NominalCategory (NominalCategory)
++ Country (Country)
++ EDICode: EDI1234 (string)
++ Status: O (string)
 
 ## IndexDocument (object)
 + Model (Model)
