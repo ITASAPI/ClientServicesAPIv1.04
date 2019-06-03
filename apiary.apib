@@ -205,6 +205,53 @@ Model Header containing AccessToken
     + Attributes (404 NotFound)
 
 
+# Group ITAS Data Modification Service
+
+## ITAS Data Modification Service [/Modification]
+`POST` Create, Update and Delete Itas data via mapped entites
+### Create ITAS Data [POST]
+
+<b>Request Body</b>
+<br />
+See Example panel for an example request body
+
+
+<b>Response Data</b>
+<br />
+See Example panel for the example response body
+
++ Request (text/plain)
+    + Header
+
+            AccessToken:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Body
+        mutation
+        {
+            CreateDepartment(Input:
+            {
+                DepartmentId : "ABCD"
+                DepartmentDescription: "ABCD Dep"
+                CountryId : "GB"
+                TradingEntityId : "JT"
+            })
+            {
+                DepartmentId,
+                DepartmentDescription
+            }
+        }
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (array [CreateDepartment])
+        + Response (200 SuccessResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 ResponseDQS)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 ResponseDQS)
+
 
 # Group ITAS Data Query Service
 
@@ -261,8 +308,6 @@ See Example panel for the example response body
 + Response 404 (application/json; charset=utf-8)
     + Attributes (404 ResponseDQS)
 
-# Group ITAS Data Import Service
-### TBC
 
 # Group ITAS Messages
 ### TBC
@@ -913,7 +958,7 @@ A multipurpose object used by several endpoints
 
 ## 404 ErrorMessageDetailMessage (object)
 + Severity: Warning (string)
-+ Message: `API5067 - API : The value {TradingEntityId} sent as the TradingEntitiyId does not exist.` (string)
++ Message: `API5084 - API : The value {TradingEntityId} sent as the TradingEntitiyId does not exist.` (string)
 
 ## 404 ResponseDQS (object)
 + Response
@@ -922,7 +967,7 @@ A multipurpose object used by several endpoints
 
 ## 404 ErrorMessageDetailMessageDQS (object)
 + Severity: Warning (string)
-+ Message: `API5084 - API : Invalid trading entities specified: {tradingEntity}.` (string)
++ Message: `Invalid trading entities specified: {tradingEntity}.` (string)
 
 ## 404 RequestIdResponse (object)
 + Response
@@ -1001,6 +1046,10 @@ A multipurpose object used by several endpoints
 ## Country (object)
 + CountryId: GB (string)
 + CountryDescription: Great Britain (string)
+
+## CreateDepartment (object)
++ DepartmentId : ABCD (string)
++ DepartmentDescription : ABCD Dep (string)
 
 ## DataFactoryExport (object)
 + Request: `<?xml version="1.0"?><PackageInput DFname="TestPackage" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://itashelp.hivedome.net/media/inpTestPackage.xsd"> <TradingEntityCode>xx</TradingEntityCode><CutOffDate>2018-04-30</CutOffDate></PackageInput>` (string)
