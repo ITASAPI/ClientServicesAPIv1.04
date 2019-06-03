@@ -243,7 +243,91 @@ See Example panel for the example response body
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
-        + Data (array [CreateDepartment])
+        + Data (array [DepartmentCreate])
+        + Response (200 SuccessResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 ResponseDQS)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 ResponseDQS)
+
+
+### Update ITAS Data [POST]
+
+<b>Request Body</b>
+<br />
+See Example panel for an example request body
+
+
+<b>Response Data</b>
+<br />
+See Example panel for the example response body
+
++ Request (text/plain)
+    + Header
+
+            AccessToken:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Body
+        mutation
+        {
+            UpdateDepartment(Input:
+            {
+                DepartmentId : "ABCD"
+                DepartmentDescription: "Department ABCD"
+                TradingEntityId : "JT"
+            })
+            {
+                DepartmentId,
+                DepartmentDescription
+            }
+        }
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (array [DepartmentUpdate])
+        + Response (200 SuccessResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 ResponseDQS)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 ResponseDQS)
+
+### Delete ITAS Data [POST]
+
+<b>Request Body</b>
+<br />
+See Example panel for an example request body
+
+
+<b>Response Data</b>
+<br />
+See Example panel for the example response body
+
++ Request (text/plain)
+    + Header
+
+            AccessToken:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Body
+        mutation
+        {
+            DeleteDepartment(Input:
+            {
+                DepartmentId : "ABCD"
+                TradingEntityId : "JT"
+            })
+            {
+                DepartmentId,
+                DepartmentDescription
+            }
+        }
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (array [DepartmentUpdate])
         + Response (200 SuccessResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -1047,12 +1131,18 @@ A multipurpose object used by several endpoints
 + CountryId: GB (string)
 + CountryDescription: Great Britain (string)
 
-## CreateDepartment (object)
-+ DepartmentId : ABCD (string)
-+ DepartmentDescription : ABCD Dep (string)
 
 ## DataFactoryExport (object)
 + Request: `<?xml version="1.0"?><PackageInput DFname="TestPackage" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://itashelp.hivedome.net/media/inpTestPackage.xsd"> <TradingEntityCode>xx</TradingEntityCode><CutOffDate>2018-04-30</CutOffDate></PackageInput>` (string)
+
+
+## DepartmentCreate (object)
++ DepartmentId : ABCD (string)
++ DepartmentDescription : ABCD Dep (string)
+
+## DepartmentUpdate (object)
++ DepartmentId : ABCD (string)
++ DepartmentDescription : Department ABCD (string)
 
 ## DepartmentValueList (object)
 + DepartmentCode: NAD (string)
