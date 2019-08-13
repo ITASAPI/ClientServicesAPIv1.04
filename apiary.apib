@@ -48,11 +48,7 @@ Model Header containing AccessToken
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|DocumentType|Document Type|`string`|30|||
-|ContractId|Contract Id|`string`|10|||
-|CounterpartyId|Counterparty Id|`string`|10|||
-|DocumentReference|Document Refrence|`string`|9|||
-|WipAccountId|WIP Account Id|`string`|11|||
+|Data|Array of Required Fields|`array`||||
 
 + Request (application/json)
     + Header
@@ -60,19 +56,13 @@ Model Header containing AccessToken
             AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
 
 
-    + Attributes (IndexDocument)
-
-
-+ Response 201 (application/json; charset=utf-8)
++ Response 200 (application/json; charset=utf-8)
     + Attributes 
-        + Data (IndexId)
-        + Response (201 CreateResponse)
-
-+ Response 400 (application/json)
-    + Attributes (400 StatusResponse)
+        + Data (RequiredFields)
+        + Response (200 SuccessResponse)
 
 + Response 404 (application/json)
-    + Attributes (404 NotFound)
+    + Attributes (404 ResponseNoRec)
 
 
 ## Document Indexing.. Release Date TBC [/DocMan/IndexDocument]
@@ -939,6 +929,15 @@ A multipurpose object used by several endpoints
 ## 404 NotFoundResponse (object)
 + Value: Not Found
 
+## 404 ResponseNoRec (object)
++ Response
+    + Value: 404 Not Found (string)
++ Messages (array[404 ErrorMessageDetailMessageNoRec])
+
+## 404 ErrorMessageDetailMessageNoRec (object)
++ Severity: Warning (string)
++ Message: `API5068 - Data : No records found.` (string)
+
 ## 404 NotFound (object)
 + Severity: Error (string)
 + Message: `API5067 - API : The value {inputValue} does not exist.` (string)
@@ -1148,6 +1147,10 @@ A multipurpose object used by several endpoints
 + ContractTermPortList (array [ContractTermPortValueList])
 + ShipmentStatusList (array [ShipmentStatusValueList])
 + TradingEntityList (array [TradingEntityValueList])
+
+## RequiredFields (array)
++ ContractId
++ DocumentReference
 
 ## ResultsMessage (object)
 + RequestId: `a123a456-7891-23a4-a567-8a9a10aaa123` (string)
