@@ -83,7 +83,7 @@ Model Header containing AccessToken
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
-        + Data : All files were uploaded successfully (string)
+        + Data : (DocmanDocumentId)
         + Response (201 CreateResponse)
 
 + Response 400 (application/json)
@@ -128,7 +128,7 @@ Model Header containing AccessToken
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
-        + Data : Document indexed successfully (string)
+        + Data : (DocmanDocumentId)
         + Response (201 CreateResponse)
 
 + Response 400 (application/json)
@@ -1164,8 +1164,8 @@ A multipurpose object used by several endpoints
 + FunctionalCurrency (array [ValuesInFunctionalCcy])
 
 
-## DocumentId (object)
-+ DocumentId: 12345 (number)
+## DocmanDocumentId (object)
++ DocmanDocumentId: 12345 (number)
 
 ## DQSDepartments (object)
 + TradingEntityId: jt (string)
