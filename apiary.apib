@@ -76,6 +76,11 @@ Model Header containing AccessToken
 |File|`Select Files`|Required|
 |Model|Example: `{"TradingEntityId": "JT", "DocumentType": "INVOICES", "CounterpartyId": "ABCD.P", "ContractId": "P00001.000", "DocumentRef": "PI1900001", "WipAccount": "0001.000"}`||
 
+<b>Response Body</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|DocmanDocumentId|Docman Document id|`number`||||
+
 + Request (application/json)
     + Header
 
@@ -112,10 +117,10 @@ Model Header containing AccessToken
 |IsPhysicalPathEncrypted|Is Physical Path Encrypted|`boolean`||||
 
 
-<b>Response Data</b>
+<b>Response Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|IndexId|Index Id|`number`||||
+|DocmanDocumentId|Docman Document id|`number`||||
 
 + Request (application/json)
     + Header
